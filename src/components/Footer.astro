@@ -1,0 +1,19 @@
+---
+import ContactCard from "./ContactCard.astro";
+
+const contact = await Astro.glob("../content/contact/*.md");
+---
+
+<footer class="flex flex-wrap gap-2 justify-center py-16">
+  {
+    contact.map((item) => {
+      return (
+        <ContactCard
+          url={item.frontmatter.url}
+          url_name={item.frontmatter.title}
+          icon={item.frontmatter.icon}
+        />
+      );
+    })
+  }
+</footer>

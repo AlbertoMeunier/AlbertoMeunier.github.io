@@ -1,0 +1,10 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { location } = Astro.props;
+---
+
+<div class="flex">
+  <Icon name="carbon:location" class="w-4 h-4 mr-1" />
+  <p class="text-sm font-light text-secondary">{location}</p>
+</div>

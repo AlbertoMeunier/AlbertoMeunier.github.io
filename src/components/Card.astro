@@ -1,0 +1,24 @@
+---
+import Link from "./Link.astro";
+import Badge from "./Badge.astro";
+import Location from "./Location.astro";
+import TextArea from "./TextArea.astro";
+import BadgeGroup from "./BadgeGroup.astro";
+
+const { timeframe, title, description, url, org, tags, location } = Astro.props;
+---
+
+<div class="card border shadow-md my-2 tracking-tighter">
+  <div class="card-body">
+    <span class="flex justify-between items-center">
+      <span class="flex">
+        <h2 class="font-bold">{org} <b class="font-thin">{title}</b></h2>
+        {url && <Link url={url} />}
+      </span>
+      {timeframe && <Badge text={timeframe} />}
+    </span>
+    {location && <Location location={location} />}
+    <TextArea text={description} />
+    {Array.isArray(tags) && <BadgeGroup tags={tags} />}
+  </div>
+</div>

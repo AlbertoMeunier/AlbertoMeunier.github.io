@@ -1,0 +1,9 @@
+---
+import Badge from "./Badge.astro";
+
+const { tags } = Astro.props;
+---
+
+<div class="flex flex-wrap gap-1">
+  {tags.map((item) => <Badge text={item} />)}
+</div>

@@ -1,0 +1,11 @@
+---
+import { Icon } from "astro-icon/components";
+
+const { icon, url, url_name } = Astro.props;
+---
+
+<a target="_blank" href={url}>
+  <button class="btn btn-outline">
+    <Icon name={icon} class="w-5 h-5" />{url_name}
+  </button>
+</a>

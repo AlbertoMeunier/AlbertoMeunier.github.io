@@ -1,0 +1,27 @@
+---
+import * as about from "../content/about/about.md";
+import Location from "./Location.astro";
+---
+
+<header class="mx-auto m-3">
+  <div class="flex flex-col items-center">
+    <div class="w-20 rounded-full shadow-md overflow-hidden">
+      <img
+        alt="avatar"
+        src="/profile.png"
+        class="grayscale-[50] hover:grayscale-0"
+      />
+    </div>
+    <div class="text-center justify-center">
+      <h1 class="text-3xl font-bold">
+        {about.frontmatter.name}
+      </h1>
+      <h2 class="text-xl">
+        {about.frontmatter.designation}
+      </h2>
+      <div class="flex justify-center">
+        <Location location={about.frontmatter.location} />
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,79 @@
+---
+import Card from "./Card.astro";
+import TextArea from "./TextArea.astro";
+import Dropdown from "../layouts/DropdownLayout.astro";
+
+import * as about from "../content/about/about.md";
+const jobs = await Astro.glob("../content/jobs/*.md");
+const  skills = await Astro.glob("../content/skills/*.md");
+const projects = await Astro.glob("../content/projects/*.md");
+const education = await Astro.glob("../content/education/*.md");
+---
+
+<div class="join join-vertical gap-1">
+  <Dropdown title={"About"} icon={"carbon:identification"}>
+    <TextArea text={about.compiledContent()} />
+  </Dropdown>
+
+  <Dropdown title={"Work Experience"} icon={"carbon:construction"}>
+    {
+      jobs.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+            org={item.frontmatter.org}
+            location={item.frontmatter.location}
+          />
+        );
+      })
+    }
+  </Dropdown>
+
+  <Dropdown title={"Projects"} icon={"carbon:tools"}>
+    {
+      projects.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+            url={item.frontmatter.url}
+          />
+        );
+      })
+    }
+  </Dropdown>
+
+  <Dropdown title={"Education"} icon={"carbon:education"}>
+    {
+      education.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            timeframe={item.frontmatter.date}
+            location={item.frontmatter.location}
+            description={item.compiledContent()}
+            tags={item.frontmatter.tags}
+          />
+        );
+      })
+    }
+  </Dropdown>
+
+  <Dropdown title={"Skills and Technologies"} icon={"carbon:skill-level"}>
+    {
+      skills.map((item) => {
+        return (
+          <Card
+            title={item.frontmatter.title}
+            description={item.compiledContent()}
+          />
+        );
+      })
+    }
+  </Dropdown>
+</div>
